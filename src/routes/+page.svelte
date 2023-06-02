@@ -3,7 +3,6 @@
     export let data;
 </script>
 
-<h1 class="text-center text-2x1 font-bold">Find Your Next Job</h1>
 
 <div class="overflow-x-auto w-full">
     {#each data.jobs as job}

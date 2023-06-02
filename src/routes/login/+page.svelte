@@ -1,42 +1,36 @@
 <script>
-    import { LoggedInState, authenticateUser } from "../../utils/auth";
-    import { onMount } from 'svelte';
+    import { authenticateUser } from "../../utils/auth";
+    import { goto } from '$app/navigation';
+    let formErrors = {};
 
-    let username = '';
-    let password = '';
-    let formErrors = {}
+  
+    async function LoggedIn(evt) {
+      evt.preventDefault();
+  
+      const userData = {
+        username: evt.target['username'].value,
+        password: evt.target['password'].value
+      };
 
-    async function handleLogin() {
-        const LoggedIn = await authenticateUser(username, password);
-        if (LoggedIn.success) {
-            localStorage.setItem('token', LoggedIn.res.token);
-            window.location.href = '/homepage';
-        } else {
-            if (LoggedIn.res.reason === 'email_not_found') {
-                alert('Email does not exist. Please create an account.');
-            } else if (LoggedIn.res.reason === 'invalid_password') {
-                alert('Invalid password. Please try again.');
-            } else {
-                alert('Login failed. Please try again.');
-            }
-        }
+      const res = await authenticateUser(userData.username, userData.password)
+  
+        if (res.success) {
+          goto('/');
+        } 
     }
+</script>
+<div>
+  <a class="link-hover italic text-xs" href="/users/new">Don't have an account? Create an account now</a>
+  <a href="/"> home</a>
 
-    onMount(() => {
-        LoggedInState.subscribe((value) => {
-            if (value) {
-                isLoggedIn = true;
-            }
-        });
-    });
-  </script>
+</div>
 
   <h1 class="text-center text-xl"> Login </h1>
   <div class="text-center">
-    <a class="link-hover italic text-xs" href="/users/new">Don't have an account? Create an account now</a>
+
 </div>
 <div class="flex justify-center items-center mt-8">
-    <form on:submit|preventDefault={handleLogin} class="w-1/3">
+    <form on:submit={LoggedIn} class="w-1/3">
         <div class="form-control w-full">
             <label class="label" for="username">
                 <span class="label-text">Username</span>
@@ -53,7 +47,7 @@
             <label class="label" for="password">
                 <span class="label-text">Password</span>
             </label>
-            <input type="password" name="password" placeholder="" class="input input-bordered w-full" required />
+            <input type="password" name="password" placeholder="password" class="input input-bordered w-full" required />
             {#if 'password' in formErrors}
             <label class="label" for="password">
                 <span class="label-text-alt text-red-500">{formErrors['password'].message}</span>

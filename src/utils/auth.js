@@ -39,7 +39,7 @@ export async function isLoggedIn() {
 
   try {
     const resp = await fetch(
-        PUBLIC_BACKEND_BASE_URL + '/api/collections/users/aut-refresh',
+        PUBLIC_BACKEND_BASE_URL + '/api/collections/users/auth-refresh',
         {
             method: 'POST',
             mode: 'cors',
@@ -92,6 +92,7 @@ export async function authenticateUser(username, password) {
             "userId": res.record.id
         }));
 
+        LoggedInState.set(true)
         return {
             success: true,
             res: res
