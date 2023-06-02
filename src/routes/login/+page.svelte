@@ -19,16 +19,12 @@
         } 
     }
 </script>
-<div>
-  <a class="link-hover italic text-xs" href="/users/new">Don't have an account? Create an account now</a>
-  <a href="/"> home</a>
 
-</div>
 
-  <h1 class="text-center text-xl"> Login </h1>
   <div class="text-center">
-
-</div>
+    <h1 class="text-center text-xl"> Login </h1>
+    <a class="link-hover italic text-xs" href="/users/new">Don't have an account? Create an account now</a>
+  </div>
 <div class="flex justify-center items-center mt-8">
     <form on:submit={LoggedIn} class="w-1/3">
         <div class="form-control w-full">
