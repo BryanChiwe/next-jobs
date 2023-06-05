@@ -1,6 +1,7 @@
 <script>
     import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
     import { goto } from '$app/navigation';
+	import { getUserId } from '../../../utils/auth';
     let formErrors = {};
 
     function postCreateJob() {
@@ -8,12 +9,15 @@
     }
 
     async function createJob(evt) {
-        evt.preventDefault()
+        evt.preventDefault();
 
-       const userData = {
+        const userID = getUserId();
+
+        const jobData = {
+        user: userID,
         title: evt.target['title'].value,
         minAnnualCompensation: evt.target['minAnnualCompensation'].value,
-        MaxAnnualCompensation: evt.target['maxAnnualCompensation'].value,
+        maxAnnualCompensation: evt.target['maxAnnualCompensation'].value,
         employer: evt.target['employer'].value,
         location: evt.target['location'].value,
         description: evt.target['description'].value,
@@ -21,18 +25,20 @@
         applicationInstructions: evt.target['applicationInstructions'].value
        };
 
-       const resp = await fetch(PUBLIC_BACKEND_BASE_URL + '/api/collections/jobs/records', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-       });
+        const resp = await fetch(PUBLIC_BACKEND_BASE_URL + '/api/collections/jobs/records', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(jobData)
+        });
 
-       if (resp.status == 200) {
-        postCreateJob();
-       }
+         if (resp.status == 200) {
+          postCreateJob();
+         } else {
+          const res = await resp.json;
+          formErrors = res.data
+         }
     }
 </script>
 
@@ -43,13 +49,13 @@
 <div class="flex justify-center items-center mt-8">
     <form on:submit={createJob} class="w-1/3">
         <div class="form-control w-full">
-            <label class="label" for="jobtitle">
+            <label class="label" for="title">
                 <span class="label-text">jobtitle</span>
             </label>
-            <input type="text" name="jobtitle" placeholder="Orang Utan" class="input input-bordered w-full" />
-            {#if 'jobtitle' in formErrors}
-            <label class="label" for="jobtitle">
-                <span class="label-text-alt text-red-500">{formErrors['jobtitle'].message}</span>
+            <input type="text" name="title" placeholder="Orang Utan" class="input input-bordered w-full" />
+            {#if 'title' in formErrors}
+            <label class="label" for="title">
+                <span class="label-text-alt text-red-500">{formErrors['title'].message}</span>
             </label>
             {/if}
         </div>
@@ -94,7 +100,7 @@
             <label class="label" for="JobLocation">
                 <span class="label-text">JobLocation</span>
             </label>
-            <input type="JobLocation" name="JobLocation" placeholder="Zoo Negara" class="input input-bordered w-full" required />
+            <input type="JobLocation" name="JobLocation" placeholder="bla bla" class="input input-bordered w-full" required />
             {#if 'JobLocation' in formErrors}
             <label class="label" for="JobLocation">
                 <span class="label-text-alt text-red-500">{formErrors['JobLocation'].message}</span>
@@ -118,7 +124,7 @@
             <label class="label" for="Requirements">
                 <span class="label-text">Requirements</span>
             </label>
-            <input type="Requirements" name="Requirements" placeholder="Zoo Negara" class="input input-bordered w-full" required />
+            <input type="Requirements" name="Requirements" placeholder="hello" class="input input-bordered w-full" required />
             {#if 'Requirements' in formErrors}
             <label class="label" for="Requirements">
                 <span class="label-text-alt text-red-500">{formErrors['Requirements'].message}</span>
@@ -130,7 +136,7 @@
             <label class="label" for="ApplicationInstructions">
                 <span class="label-text">ApplicationInstructions</span>
             </label>
-            <input type="ApplicationInstructions" name="ApplicationInstructions" placeholder="Zoo Negara" class="input input-bordered w-full" required />
+            <input type="ApplicationInstructions" name="ApplicationInstructions" placeholder="bye" class="input input-bordered w-full" required />
             {#if 'ApplicationInstructions' in formErrors}
             <label class="label" for="ApplicationInstructions">
                 <span class="label-text-alt text-red-500">{formErrors['ApplicationInstructions'].message}</span>
