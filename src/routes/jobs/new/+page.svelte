@@ -73,73 +73,73 @@
         </div>
 
         <div class="form-control w-full">
-            <label class="label" for="MaxAnnualCompensation">
+            <label class="label" for="maxAnnualCompensation">
                 <span class="label-text">MaxAnnualCompensation</span>
             </label>
-            <input type="MaxAnnualCompensation" name="MaxAnnualCompensation" placeholder="" class="input input-bordered w-full" required />
-            {#if 'MaxAnnualCompensation' in formErrors}
-            <label class="label" for="MaxAnnualCompensation">
-                <span class="label-text-alt text-red-500">{formErrors['MaxAnnualCompensation'].message}</span>
+            <input type="maxAnnualCompensation" name="maxAnnualCompensation" placeholder="" class="input input-bordered w-full" required />
+            {#if 'maxAnnualCompensation' in formErrors}
+            <label class="label" for="maxAnnualCompensation">
+                <span class="label-text-alt text-red-500">{formErrors['maxAnnualCompensation'].message}</span>
             </label>
             {/if}
         </div>
 
         <div class="form-control w-full">
-            <label class="label" for="CompanyName">
+            <label class="label" for="employer">
                 <span class="label-text">CompanyName</span>
             </label>
-            <input type="CompanyName" name="CompanyName" placeholder="Zoo Negara" class="input input-bordered w-full" required />
-            {#if 'CompanyName' in formErrors}
-            <label class="label" for="CompanyName">
-                <span class="label-text-alt text-red-500">{formErrors['CompanyName'].message}</span>
+            <input type="employer" name="employer" placeholder="Zoo Negara" class="input input-bordered w-full" required />
+            {#if 'employer' in formErrors}
+            <label class="label" for="employer">
+                <span class="label-text-alt text-red-500">{formErrors['employer'].message}</span>
             </label>
             {/if}
         </div>
 
         <div class="form-control w-full">
-            <label class="label" for="JobLocation">
+            <label class="label" for="location">
                 <span class="label-text">JobLocation</span>
             </label>
-            <input type="JobLocation" name="JobLocation" placeholder="bla bla" class="input input-bordered w-full" required />
-            {#if 'JobLocation' in formErrors}
-            <label class="label" for="JobLocation">
-                <span class="label-text-alt text-red-500">{formErrors['JobLocation'].message}</span>
+            <input type="location" name="location" placeholder="bla bla" class="input input-bordered w-full" required />
+            {#if 'location' in formErrors}
+            <label class="label" for="location">
+                <span class="label-text-alt text-red-500">{formErrors['location'].message}</span>
             </label>
             {/if}
         </div>
 
         <div class="form-control w-full">
-            <label class="label" for="Description">
+            <label class="label" for="description">
                 <span class="label-text">Description</span>
             </label>
-            <input type="Description" name="Description" placeholder="Zoo Negara" class="input input-bordered w-full" required />
-            {#if 'Description' in formErrors}
-            <label class="label" for="Description">
-                <span class="label-text-alt text-red-500">{formErrors['Description'].message}</span>
+            <input type="description" name="description" placeholder="Zoo Negara" class="input input-bordered w-full" required />
+            {#if 'description' in formErrors}
+            <label class="label" for="description">
+                <span class="label-text-alt text-red-500">{formErrors['description'].message}</span>
             </label>
             {/if}
         </div>
 
         <div class="form-control w-full">
-            <label class="label" for="Requirements">
+            <label class="label" for="requirements">
                 <span class="label-text">Requirements</span>
             </label>
-            <input type="Requirements" name="Requirements" placeholder="hello" class="input input-bordered w-full" required />
-            {#if 'Requirements' in formErrors}
-            <label class="label" for="Requirements">
-                <span class="label-text-alt text-red-500">{formErrors['Requirements'].message}</span>
+            <input type="requirements" name="requirements" placeholder="hello" class="input input-bordered w-full" required />
+            {#if 'requirements' in formErrors}
+            <label class="label" for="requirements">
+                <span class="label-text-alt text-red-500">{formErrors['requirements'].message}</span>
             </label>
             {/if}
         </div>
 
         <div class="form-control w-full">
-            <label class="label" for="ApplicationInstructions">
+            <label class="label" for="applicationInstructions">
                 <span class="label-text">ApplicationInstructions</span>
             </label>
-            <input type="ApplicationInstructions" name="ApplicationInstructions" placeholder="bye" class="input input-bordered w-full" required />
-            {#if 'ApplicationInstructions' in formErrors}
-            <label class="label" for="ApplicationInstructions">
-                <span class="label-text-alt text-red-500">{formErrors['ApplicationInstructions'].message}</span>
+            <input type="applicationInstructions" name="applicationInstructions" placeholder="bye" class="input input-bordered w-full" required />
+            {#if 'applicationInstructions' in formErrors}
+            <label class="label" for="applicationInstructions">
+                <span class="label-text-alt text-red-500">{formErrors['applicationInstructions'].message}</span>
             </label>
             {/if}
         </div>
